@@ -1,3 +1,4 @@
+from ast import main
 import requests
 import json
 import pandas as pd  
@@ -16,7 +17,7 @@ def get_marvel_chars(letter, limit_val, apikey_user, hash_user):
     limit = limit_val
     )
 
-    print(query)
+    # print(query)
 
     headers = {'Content-Type': 'application/json'}
 
@@ -45,16 +46,26 @@ def get_marvel_chars(letter, limit_val, apikey_user, hash_user):
 
     marvel_new = marvel.loc[:,['name', 'events_no', 'series_no', 'stories_no', 'comics_no', 'id']]
     # print(marvel_new) 
-    print('Size of the dataframe = ', marvel_new.shape)
+    # print('Size of the dataframe = ', marvel_new.shape)
 
     return marvel_new
 
-df_list = []
+def filter_marvel_chars(df, col_name, filter):
+    temp = df.query(filter)
+    print(temp)
+    print("The filtered dataframe's has ", temp.shape[0], " characters")
 
-for i in (string.ascii_lowercase):
-    try:
-        df_list.append( get_marvel_chars(i, 50, 'df1df21c1c99623b81866bda416893c8', '15015d7abd4c552016258693f24d6c9e'))
-    except:
-        print("Couldn't fetch characters: ", i)
-df = pd.concat(df_list, axis=0)
-print(df)
+if __name__ == "__main__":
+    df_list = []
+
+    for i in (string.ascii_lowercase):
+        try:
+            df_list.append( get_marvel_chars(i, 50, 'df1df21c1c99623b81866bda416893c8', '15015d7abd4c552016258693f24d6c9e'))
+            print("fetching characters with ", i )        
+        except:
+            print("Couldn't fetch characters: ", i)
+    df = pd.concat(df_list, axis=0)
+    print(df)
+
+    filter_marvel_chars(df, "name", "name == 'Zeus'")
+    filter_marvel_chars(df, "comics_no, stories_no", "`comics_no` >= 200 and `stories_no` >= 250")
