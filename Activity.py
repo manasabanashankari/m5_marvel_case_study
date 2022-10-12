@@ -7,6 +7,7 @@ import argparse
 
 url = 'http://gateway.marvel.com/v1/public/characters'
 
+###act 5: CLI execution
 def get_args():
     parser = argparse.ArgumentParser(description='Get Marvel Characters')
     parser.add_argument('--apikey', dest='apikey', type=str, default="df1df21c1c99623b81866bda416893c8",
@@ -20,6 +21,8 @@ def get_args():
     return args
 
 args = get_args()
+
+###act 2,3: api call, function to make an api call
 
 # api_key_public = 'df1df21c1c99623b81866bda416893c8' 
 # hash_value = '15015d7abd4c552016258693f24d6c9e' ###MD5_HASH(TS+PRIVATE_KEY+PUBLIC_KEY)
@@ -41,7 +44,7 @@ def get_marvel_chars(letter, limit_val, apikey_user, hash_user):
 
     res = response.json() ###res = dict dt
 
-    #print(res['data']['results'], type(res['data']['results']))
+    # print(res['data']['results'], type(res['data']['results']))
 
     for i in range(len(res['data']['results'])):
         res['data']['results'][i]['comics_no'] = res['data']['results'][i]['comics']['available']
@@ -66,11 +69,13 @@ def get_marvel_chars(letter, limit_val, apikey_user, hash_user):
 
     return marvel_new
 
+###act 4:applying filters
 def filter_marvel_chars(df, col_name, filter):
     temp = df.query(filter)
     print(temp)
     print("The filtered dataframe's has ", temp.shape[0], " characters")
 
+###act 3: exception handling
 if __name__ == "__main__":
     df_list = []
 
