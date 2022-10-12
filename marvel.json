@@ -4,7 +4,7 @@
     "copyright": "\u00a9 2022 MARVEL",
     "attributionText": "Data provided by Marvel. \u00a9 2022 MARVEL",
     "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. \u00a9 2022 MARVEL</a>",
-    "etag": "5b17f25da78fb77df0fc6cd075f3e90682081c81",
+    "etag": "8a2d76af5c99b064cbbedd05df250c8bac32769f",
     "data": {
         "offset": 0,
         "limit": 50,
@@ -774,12 +774,12 @@
                             "name": "New Thunderbolts (2004 - 2006)"
                         },
                         {
-                            "resourceURI": "http://gateway.marvel.com/v1/public/series/18527",
-                            "name": "Thunderbolts (2006 - 2012)"
-                        },
-                        {
                             "resourceURI": "http://gateway.marvel.com/v1/public/series/2296",
                             "name": "Thunderbolts (1997 - 2003)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/series/18527",
+                            "name": "Thunderbolts (2006 - 2012)"
                         }
                     ],
                     "returned": 9
@@ -968,8 +968,8 @@
                             "name": "Hercules: Prince of Power (1982) #4"
                         },
                         {
-                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/43406",
-                            "name": "Hercules: Prince of Power (1982) #1"
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/43410",
+                            "name": "Hercules: Prince of Power (1984) #1"
                         }
                     ],
                     "returned": 20
@@ -995,12 +995,12 @@
                             "name": "Herc (2010 - 2011)"
                         },
                         {
-                            "resourceURI": "http://gateway.marvel.com/v1/public/series/16430",
-                            "name": "Hercules: Prince of Power (1984)"
-                        },
-                        {
                             "resourceURI": "http://gateway.marvel.com/v1/public/series/16429",
                             "name": "Hercules: Prince of Power (1982)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/series/16430",
+                            "name": "Hercules: Prince of Power (1984)"
                         },
                         {
                             "resourceURI": "http://gateway.marvel.com/v1/public/series/3762",

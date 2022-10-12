@@ -3,8 +3,24 @@ import requests
 import json
 import pandas as pd  
 import string
+import argparse
 
 url = 'http://gateway.marvel.com/v1/public/characters'
+
+def get_args():
+    parser = argparse.ArgumentParser(description='Get Marvel Characters')
+    parser.add_argument('--apikey', dest='apikey', type=str, default="df1df21c1c99623b81866bda416893c8",
+                        help='provide api key for user')
+    parser.add_argument('--hash', dest='hash', type=str, default="15015d7abd4c552016258693f24d6c9e",
+                        help='provide hash for user')
+    parser.add_argument('--filter', dest='filter', type=str, default="name == 'Zeus'",
+                        help='provide filter to be applied')
+
+    args = parser.parse_args()
+    return args
+
+args = get_args()
+
 # api_key_public = 'df1df21c1c99623b81866bda416893c8' 
 # hash_value = '15015d7abd4c552016258693f24d6c9e' ###MD5_HASH(TS+PRIVATE_KEY+PUBLIC_KEY)
 
@@ -60,12 +76,12 @@ if __name__ == "__main__":
 
     for i in (string.ascii_lowercase):
         try:
-            df_list.append( get_marvel_chars(i, 50, 'df1df21c1c99623b81866bda416893c8', '15015d7abd4c552016258693f24d6c9e'))
+            df_list.append( get_marvel_chars(i, 50, args.apikey, args.hash))
             print("fetching characters with ", i )        
         except:
             print("Couldn't fetch characters: ", i)
     df = pd.concat(df_list, axis=0)
     print(df)
 
-    filter_marvel_chars(df, "name", "name == 'Zeus'")
+    filter_marvel_chars(df, "name", args.filter)
     filter_marvel_chars(df, "comics_no, stories_no", "`comics_no` >= 200 and `stories_no` >= 250")
